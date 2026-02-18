@@ -43,9 +43,9 @@ test.describe ('Digital Assistant - Insurance Contribution Calculator' , () => {
         const currentYear = new Date().getFullYear();
         const calculatedBirthYear = (currentYear - data.age).toString();
         await insuranceCalculator.einkommenTextbox.fill('80000');
-        await insuranceCalculator.employmentWeiterButton.click({ force: true });
+        await insuranceCalculator.employmentWeiterButton.click();
         await insuranceCalculator.selectInsuranceStartDate('01.06.2026');
-        await insuranceCalculator.insuranceWeiterButton.click({ force: true });
+        await insuranceCalculator.insuranceWeiterButton.click();
         await insuranceCalculator.selectBirthDay(data.birthdayTag, data.birthdayMonth , calculatedBirthYear);
 
         if(data.expectedMessage.length>0){
@@ -63,10 +63,10 @@ test.describe ('Digital Assistant - Insurance Contribution Calculator' , () => {
 
     test('E2E Happy Path: Valid Application Flow', async ({page}) => {
         await insuranceCalculator.einkommenTextbox.fill('80000');
-        await insuranceCalculator.employmentWeiterButton.click({ force: true });
+        await insuranceCalculator.employmentWeiterButton.click();
         await insuranceCalculator.vollversicherungCheckBox.click();
         await insuranceCalculator.selectInsuranceStartDate('01.06.2026');
-        await insuranceCalculator.insuranceWeiterButton.click({ force: true });
+        await insuranceCalculator.insuranceWeiterButton.click();
         await insuranceCalculator.selectBirthDay('02', '06' , '1994');
         await insuranceCalculator.birthdayNextButton.click();
         await insuranceCalculator.insurancestatusWeiterButton.click();
