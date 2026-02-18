@@ -20,6 +20,8 @@ export class InsuranceCalculator {
     readonly childrennokidsWeiterButton: Locator;
     readonly tariffoptionsrecommendedContinueButton: Locator;
     readonly readultprimarycontentText: Locator;
+    
+    readonly vollversicherungCheckBox: Locator;
 
 
 
@@ -47,6 +49,7 @@ export class InsuranceCalculator {
         this.childrennokidsWeiterButton = page.locator('[data-cy="children-no-kids-continue"]');
         this.tariffoptionsrecommendedContinueButton = page.getByRole('button', { name: 'Unsere Empfehlung übernehmen' })
         this.readultprimarycontentText = page.getByRole('heading', { name: 'Klasse, hier dein Angebot' });
+        this.vollversicherungCheckBox =page.locator('span').filter({ hasText: 'Vollversicherung' }).first()
 
 
     }

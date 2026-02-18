@@ -64,6 +64,7 @@ test.describe ('Digital Assistant - Insurance Contribution Calculator' , () => {
     test('E2E Happy Path: Valid Application Flow', async ({page}) => {
         await insuranceCalculator.einkommenTextbox.fill('80000');
         await insuranceCalculator.employmentWeiterButton.click({ force: true });
+        await insuranceCalculator.vollversicherungCheckBox.click();
         await insuranceCalculator.selectInsuranceStartDate('01.06.2026');
         await insuranceCalculator.insuranceWeiterButton.click({ force: true });
         await insuranceCalculator.selectBirthDay('02', '06' , '1994');
