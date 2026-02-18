@@ -1,0 +1,66 @@
+{
+  "incomeTests": [
+    {
+      "amount": "80000",
+      "expectedMessage": "Wenn du 2026 mehr als 69.750 € Euro pro Jahr verdienst, ist dein jährlicher GKV-Beitrag um bis zu 1.046 € Euro pro Jahr gestiegen.",
+      "description": "High Income: Should show general GKV increase warning"
+    },
+    {
+      "amount": "73800",
+      "expectedMessage": "Warst du in 2025 bereits freiwillig gesetzlich versichert, ist ein Wechsel bis 31.03.2026 möglich.",
+      "description": "Boundary Income: Should trigger the specific switching deadline warning"
+    },
+    {
+      "amount": "74800",
+      "expectedMessage": "Warst du in 2025 bereits freiwillig gesetzlich versichert, ist ein Wechsel bis 31.03.2026 möglich.",
+      "description": "Mid-Range Income: Should trigger the specific switching deadline warning"
+    },
+    {
+      "amount": "73799",
+      "expectedMessage": "",
+      "description": "Boundary Income (-1): Should NOT show the deadline warning (Clean case)"
+    }
+  ],
+
+
+  "birthdayTests": [
+    {
+        "description": "Negative Test: Reject Future Date",
+        "birthdayTag" : "01", 
+        "birthdayMonth" : "06",
+        "age" : -5,
+        "expectedMessage": "Du bist in der Zukunft geboren? Bitte überprüfe deine Eingaben."        
+    },
+    {
+        "description": "Boundary Test: Max Age Limit (>101 years old)",
+        "birthdayTag" : "01", 
+        "birthdayMonth" : "06",
+        "age" : 106,
+        "expectedMessage": "Du kannst dich nur bis 101 Jahren bei uns versichern."        
+    },
+    {
+        "description": "Happy Path: Valid Adult Age",
+        "birthdayTag" : "01", 
+        "birthdayMonth" : "06",
+        "age" : 35,
+        "expectedMessage": ""        
+    },
+    {
+        "description": "Boundary Test: Min Age Limit (<18 years old)",
+        "birthdayTag" : "01", 
+        "birthdayMonth" : "06",
+        "age" : 6,
+        "expectedMessage": "Leider kannst du dich erst ab 18 Jahren alleine versichern."        
+    }
+
+
+  ]
+
+}
+
+
+
+
+
+
+
