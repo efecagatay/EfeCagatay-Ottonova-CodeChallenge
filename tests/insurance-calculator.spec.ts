@@ -5,9 +5,6 @@ import testData from '../data/calculatorData.json';
 
 test.describe ('Digital Assistant - Insurance Contribution Calculator' , () => {
     let insuranceCalculator: InsuranceCalculator;
-
-    
-
     test.beforeEach(async ({page}) => {
         insuranceCalculator = new InsuranceCalculator(page);
         await insuranceCalculator.navigateToCalculator();
@@ -17,20 +14,14 @@ test.describe ('Digital Assistant - Insurance Contribution Calculator' , () => {
 
 
     for( const data of testData.incomeTests) {
-
-        test(`Income Check: ${data.description} (${data.amount}€)` , async ({page}) =>{
-        
+        test(`Income Check: ${data.description} (${data.amount}€)` , async ({page}) =>{    
         await insuranceCalculator.einkommenTextbox.fill(data.amount);
-
-
         if (data.expectedMessage.length>0){
               await expect (insuranceCalculator.einkommenControlText).toContainText(data.expectedMessage)
-
         }
         else {
             await expect (insuranceCalculator.einkommenControlText).toBeHidden();
         }       
-
         })
     }
 
@@ -39,7 +30,6 @@ test.describe ('Digital Assistant - Insurance Contribution Calculator' , () => {
 
     for (const data of testData.birthdayTests) {
         test (`Birthday Validation: ${data.description} (${data.age})`, async ({page}) =>{
-
         const currentYear = new Date().getFullYear();
         const calculatedBirthYear = (currentYear - data.age).toString();
         await insuranceCalculator.einkommenTextbox.fill('80000');
@@ -74,24 +64,6 @@ test.describe ('Digital Assistant - Insurance Contribution Calculator' , () => {
         await insuranceCalculator.tariffoptionsrecommendedContinueButton.click();
         await expect (insuranceCalculator.readultprimarycontentText).toContainText('Klasse, hier dein Angebot');
 
-
-
-
-
     })
-
-
-
-
-
-
-
-
-
-
-
-
-           
-
-    
+  
 })

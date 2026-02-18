@@ -20,15 +20,7 @@ export class InsuranceCalculator {
     readonly childrennokidsWeiterButton: Locator;
     readonly tariffoptionsrecommendedContinueButton: Locator;
     readonly readultprimarycontentText: Locator;
-    
     readonly vollversicherungCheckBox: Locator;
-
-
-
-
-    // InsuranceCalculator.ts dosyasına bunu yaz:
-
-
 
 
     constructor (page:Page) {
@@ -50,8 +42,6 @@ export class InsuranceCalculator {
         this.tariffoptionsrecommendedContinueButton = page.getByRole('button', { name: 'Unsere Empfehlung übernehmen' })
         this.readultprimarycontentText = page.getByRole('heading', { name: 'Klasse, hier dein Angebot' });
         this.vollversicherungCheckBox =page.locator('span').filter({ hasText: 'Vollversicherung' }).first()
-
-
     }
 
 
@@ -64,9 +54,7 @@ async navigateToCalculator() {
 
         }
         catch(error) {
-
-        }
-        
+        }     
         await this.page.goto('/online-beitragsrechner/versicherungswahl/berufsstatus');     
     }
 
@@ -76,7 +64,6 @@ async navigateToCalculator() {
         await this.versicherungsstartCombobox.selectOption({ label: date });
     }
 
-
     async selectBirthDay(tag:string , month:string , year:string) {
 
         await this.birthdayTagText.fill(tag)
@@ -84,8 +71,5 @@ async navigateToCalculator() {
         await this.birthdayYearText.fill(year)
 
     }
-
-
-
 
 }
