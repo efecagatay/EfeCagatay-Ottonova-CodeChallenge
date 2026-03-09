@@ -58,6 +58,23 @@ async navigateToCalculator() {
         await this.page.goto('/online-beitragsrechner/versicherungswahl/berufsstatus');     
     }
 
+async selectInsuranceStartDateNextMonth() {
+  const date = new Date();
+  
+  // Mevcut ayın üzerine 1 ekliyoruz (Aralık ise yılı otomatik 1 artırır)
+  date.setMonth(date.getMonth() + 1);
+
+  // Tarihi Alman formatına (01.10.2026 gibi) çeviriyoruz
+  const nextMonthDate = date.toLocaleDateString('de-DE', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric'
+  });
+
+  // Input alanını bul ve tarihi yaz
+  await this.page.locator('#start-date-input').fill(nextMonthDate);
+}
+
 
 
   async selectInsuranceStartDate(date: string) {
