@@ -34,7 +34,7 @@ test.describe ('Digital Assistant - Insurance Contribution Calculator' , () => {
         const calculatedBirthYear = (currentYear - data.age).toString();
         await insuranceCalculator.einkommenTextbox.fill('80000');
         await insuranceCalculator.employmentWeiterButton.click();
-        await insuranceCalculator.selectInsuranceStartDateNextMonth()
+        await insuranceCalculator.selectInsuranceStartDateNextMonth();
         await insuranceCalculator.insuranceWeiterButton.click();
         await insuranceCalculator.selectBirthDay(data.birthdayTag, data.birthdayMonth , calculatedBirthYear);
 
